@@ -1,22 +1,17 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import { Navigation } from 'react-native-navigation';
+import { Provider } from 'react-redux';
+
+import LoginScreen from './src/screens/Login/Login';
+import store from './src/store/configureStore';
+
+Navigation.registerComponent('loginApp.LoginScreen', () => LoginScreen, store, Provider);
+
+// Start App
+export default () => Navigation.startSingleScreenApp({
+   screen: {
+     screen: "loginApp.LoginScreen",
+     title: "Login"
+   }
+ });
 
 
-export default class App extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Welcome to Login !!!</Text>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});
