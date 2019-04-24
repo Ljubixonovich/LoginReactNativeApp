@@ -11,7 +11,15 @@ export default () => Navigation.startSingleScreenApp({
    screen: {
      screen: "loginApp.LoginScreen",
      title: "Login"
-   }
+   },
+   appStyle: {
+      orientation: 'portrait',
+      // navigatorStyle: {
+      //    navBarBackgroundColor: '#f7f7f7',
+      //    // navBarHidden: true
+      // }
+      
+   },
  });
 
 
