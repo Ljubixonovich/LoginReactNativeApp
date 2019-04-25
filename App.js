@@ -10,15 +10,11 @@ Navigation.registerComponent('loginApp.LoginScreen', () => LoginScreen, store, P
 export default () => Navigation.startSingleScreenApp({
    screen: {
      screen: "loginApp.LoginScreen",
-     title: "Login"
+     title: "Login",
+     navigatorStyle : {navBarHidden: true }
    },
    appStyle: {
-      orientation: 'portrait',
-      // navigatorStyle: {
-      //    navBarBackgroundColor: '#f7f7f7',
-      //    // navBarHidden: true
-      // }
-      
+      orientation: 'portrait'      
    },
  });
 

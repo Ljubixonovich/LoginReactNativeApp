@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { fonts } from '../../assets/index';
 
 class LoginScreen extends Component {
+   constructor(props) {
+      super(props);
+   }
 
    render() {
       return(
@@ -21,11 +24,5 @@ const mapStateToProps = state => {
    };
  }
  
-//  const mapDispatchToProps = dispatch => {
-//    return {
-//      onTryAuth: (authData, authMode) => dispatch(tryAuth(authData, authMode)),
-//      onAutoSignIn: () => dispatch(authAutoSignIn())
-//    };
-//  };
  
  export default connect(mapStateToProps, null)(LoginScreen);
