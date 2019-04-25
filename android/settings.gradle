@@ -1,4 +1,4 @@
-rootProject.name = 'LoginReactNativeApp'
+rootProject.name = 'login app'
 
 include ':app'
 

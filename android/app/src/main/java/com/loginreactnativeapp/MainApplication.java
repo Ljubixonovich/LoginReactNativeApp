@@ -1,4 +1,4 @@
-package com.loginreactnativeapp;
+package com.agencycanoe.ljubomirlogin;
 
 import android.app.Application;
 

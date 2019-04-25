@@ -103,7 +103,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.loginreactnativeapp"
+        applicationId "com.agencycanoe.ljubomirlogin"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

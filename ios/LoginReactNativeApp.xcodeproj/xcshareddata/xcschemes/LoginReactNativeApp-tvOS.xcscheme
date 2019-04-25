@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "LoginReactNativeApp-tvOS.app"
-               BlueprintName = "LoginReactNativeApp-tvOS"
-               ReferencedContainer = "container:LoginReactNativeApp.xcodeproj">
+               BuildableName = "login app-tvOS.app"
+               BlueprintName = "login app-tvOS"
+               ReferencedContainer = "container:login app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "LoginReactNativeApp-tvOSTests.xctest"
-               BlueprintName = "LoginReactNativeApp-tvOSTests"
-               ReferencedContainer = "container:LoginReactNativeApp.xcodeproj">
+               BuildableName = "login app-tvOSTests.xctest"
+               BlueprintName = "login app-tvOSTests"
+               ReferencedContainer = "container:login app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "LoginReactNativeApp-tvOSTests.xctest"
-               BlueprintName = "LoginReactNativeApp-tvOSTests"
-               ReferencedContainer = "container:LoginReactNativeApp.xcodeproj">
+               BuildableName = "login app-tvOSTests.xctest"
+               BlueprintName = "login app-tvOSTests"
+               ReferencedContainer = "container:login app.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "LoginReactNativeApp-tvOS.app"
-            BlueprintName = "LoginReactNativeApp-tvOS"
-            ReferencedContainer = "container:LoginReactNativeApp.xcodeproj">
+            BuildableName = "login app-tvOS.app"
+            BlueprintName = "login app-tvOS"
+            ReferencedContainer = "container:login app.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "LoginReactNativeApp-tvOS.app"
-            BlueprintName = "LoginReactNativeApp-tvOS"
-            ReferencedContainer = "container:LoginReactNativeApp.xcodeproj">
+            BuildableName = "login app-tvOS.app"
+            BlueprintName = "login app-tvOS"
+            ReferencedContainer = "container:login app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "LoginReactNativeApp-tvOS.app"
-            BlueprintName = "LoginReactNativeApp-tvOS"
-            ReferencedContainer = "container:LoginReactNativeApp.xcodeproj">
+            BuildableName = "login app-tvOS.app"
+            BlueprintName = "login app-tvOS"
+            ReferencedContainer = "container:login app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
