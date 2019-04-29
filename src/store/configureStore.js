@@ -19,7 +19,8 @@ if (__DEV__) {
 const sagaMiddleware = createSagaMiddleware();
 
 const configureStore = () => {
-   return createStore(rootReducer, composeEnchancers(applyMiddleware(sagaMiddleware)))
+   return createStore(rootReducer, 
+      composeEnchancers(applyMiddleware(sagaMiddleware)))
 };
 
 const store = configureStore();

@@ -9,6 +9,9 @@ class WelcomeScreen extends Component {
       showTitle: true
    };
 
+   static navigatorStyle = {
+      tabBarHidden: true
+   }
    constructor(props) {
       super(props);
    }
