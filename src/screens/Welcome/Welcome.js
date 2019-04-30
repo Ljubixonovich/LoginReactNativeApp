@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, ImageBackground } from 'react-native';
+import { View, StyleSheet, Text, ImageBackground, Animated } from 'react-native';
 import { connect } from 'react-redux';
 
 import { fonts } from '../../assets/index';
 
 class WelcomeScreen extends Component {
    state = {
-      showTitle: true
+      showTitle: true,
+      removeAnim: new Animated.Value(1)
    };
 
    static navigatorStyle = {
@@ -28,9 +29,14 @@ class WelcomeScreen extends Component {
          };
       });
 
+      Animated.timing(this.state.removeAnim, {
+         toValue: 0,
+         duration: 400
+      })
+      .start();
+
       this.props.navigator.toggleTabs({
          // to: 'hidden',
-         // animate: true,
          to: 'shown',
          animated: true
       });
@@ -39,20 +45,36 @@ class WelcomeScreen extends Component {
 
    render() {
       return (
-         <ImageBackground source={require('../../assets/images/background.png')}
+         <ImageBackground 
+            source={require('../../assets/images/background.png')}
             style={{ width: '100%', height: '100%' }}
             imageStyle={{ resizeMode: 'cover' }}
          >
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-               <Text style={{ fontFamily: fonts.light, fontSize: 48, color: 'white' }}>
-                  {this.state.showTitle ? 'Welcome.' : ''}
-               </Text>
+            <View style={styles.titleContainer}>
+               <Animated.View style={{opacity: this.state.removeAnim}}>
+                  <Text style={styles.titleText}>
+                     Welcome.
+                  </Text>
+               </Animated.View>
             </View>
 
          </ImageBackground>
       );
    }
 }
+
+const styles = StyleSheet.create({
+   titleContainer: {
+      flex: 1, 
+      justifyContent: 'center', 
+      alignItems: 'center'
+   },
+   titleText: {
+      fontFamily: fonts.light, 
+      fontSize: 48, 
+      color: 'white'
+   }
+});
 
 const mapStateToProps = state => {
    return {
