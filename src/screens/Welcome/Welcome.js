@@ -31,7 +31,7 @@ class WelcomeScreen extends Component {
 
       Animated.timing(this.state.removeAnim, {
          toValue: 0,
-         duration: 400
+         duration: 300
       })
       .start();
 

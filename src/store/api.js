@@ -12,7 +12,13 @@ export const login = async (username, password) => {
 
 export const verifyToken = async (token) => {
    const response = await fetch('https://www.grainhappy.com/wp-json/jwt-auth/v1/token/validate', {
-
+      method: 'POST',
+      headers: {
+         Accept: 'application/json',
+         'Content-Type': 'application/json',
+         "Authorization": "Bearer " + token
+      },
+      body: JSON.stringify({ token: token }),
    });
    return await response.json();
 }

@@ -8,14 +8,36 @@ import Btn from '../../components/UI/ButtonWithBackground/ButtonWithBackground';
 import DefaultInput from '../../components/UI/DefaultInput/DefaultInput';
 import validate from '../../utility/validation';
 import { tryAuth } from '../../store/actions';
+import { getToken, deleteToken } from '../../store/sagas';
+import { verifyToken } from '../../store/api';
 
 class LoginScreen extends Component {
    constructor(props) {
       super(props);
    }
 
-   componentWillMount() {
+   // componentDidMount() {
+   //    this.props.onAutoSignIn();
+   // }
 
+   componentWillMount = async () => {
+      const storedToken = await getToken();
+      console.log('ljToken: ' + storedToken);
+
+      if (!storedToken) {
+         return;
+      }
+
+      const result = await verifyToken(storedToken);
+      console.log('result: ' + result);
+      console.log('result.data.status: ' + result.data.status);
+
+      if (result.data.status === 200) {
+         //  deleteToken();
+         startMainTabs();
+      } else {
+         deleteToken();
+      }
    }
 
    state = {
@@ -41,24 +63,23 @@ class LoginScreen extends Component {
 
    updateInputState = (key, value) => {
       this.setState(prevState => {
-        return {
-          controls: {
-            ...prevState.controls,
-            [key]: {
-              ...prevState.controls[key],
-              value: value,
-              valid: validate(value, prevState.controls[key].validationRules),
-              touched: true
-            }            
-          } 
-        };
+         return {
+            controls: {
+               ...prevState.controls,
+               [key]: {
+                  ...prevState.controls[key],
+                  value: value,
+                  valid: validate(value, prevState.controls[key].validationRules),
+                  touched: true
+               }
+            }
+         };
       });
-    };
+   };
 
    loginHandler = () => {
-      // startMainTabs();
       this.props.onTryAuth(
-         this.state.controls.userName.value, 
+         this.state.controls.userName.value,
          this.state.controls.password.value
       );
    }
@@ -72,12 +93,12 @@ class LoginScreen extends Component {
                <View style={styles.inputContainer}>
                   <DefaultInput
                      placeholder='UserName' style={styles.input}
-                     value={this.state.controls.userName.value}                     
+                     value={this.state.controls.userName.value}
                      valid={this.state.controls.userName.valid}
                      touched={this.state.controls.userName.touched}
                      onChangeText={(val) => this.updateInputState('userName', val)}
                   />
-                   <DefaultInput
+                  <DefaultInput
                      placeholder='Password' style={styles.input}
                      value={this.state.controls.password.value}
                      valid={this.state.controls.password.valid}
@@ -89,7 +110,7 @@ class LoginScreen extends Component {
 
                <View style={styles.btnContainer}>
                   <Btn
-                     width = { 200 }
+                     width={200}
                      textColor='black'
                      color='#67B5CA'
                      onPress={this.loginHandler}
@@ -98,7 +119,7 @@ class LoginScreen extends Component {
                         !this.state.controls.userName.valid ||
                         !this.state.controls.password.valid}
                   >
-                     { this.props.isLoading ? 'LOGGING IN...' : 'LOGIN' }
+                     {this.props.isLoading ? 'LOGGING IN...' : 'LOGIN'}
                   </Btn>
                </View>
             </View>
@@ -138,10 +159,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
    return {
-     onTryAuth: (userName, password) => dispatch(tryAuth(userName, password)),
-   //  onAutoSignIn: () => dispatch(authAutoSignIn())
+      onTryAuth: (userName, password) => dispatch(tryAuth(userName, password)),
+      // onAutoSignIn: () => dispatch(authAutoSignIn())
    };
- }; 
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

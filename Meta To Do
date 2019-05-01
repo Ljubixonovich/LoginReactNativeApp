@@ -4,3 +4,10 @@ result: {
    "user_nicename":"lju",
    "user_display_name":"lju"
 }
+
+
+
+export PATH="/home/ljubomir/Android/Sdk/platform-tools":$PATH
+
+
+react-native run-android
