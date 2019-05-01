@@ -7,10 +7,15 @@ import { fonts } from '../../assets/index';
 import Btn from '../../components/UI/ButtonWithBackground/ButtonWithBackground';
 import DefaultInput from '../../components/UI/DefaultInput/DefaultInput';
 import validate from '../../utility/validation';
+import { tryAuth } from '../../store/actions';
 
 class LoginScreen extends Component {
    constructor(props) {
       super(props);
+   }
+
+   componentWillMount() {
+
    }
 
    state = {
@@ -51,7 +56,11 @@ class LoginScreen extends Component {
     };
 
    loginHandler = () => {
-      startMainTabs();
+      // startMainTabs();
+      this.props.onTryAuth(
+         this.state.controls.userName.value, 
+         this.state.controls.password.value
+      );
    }
 
    render() {
@@ -89,7 +98,7 @@ class LoginScreen extends Component {
                         !this.state.controls.userName.valid ||
                         !this.state.controls.password.valid}
                   >
-                     LOGIN
+                     { this.props.isLoading ? 'LOGGING IN...' : 'LOGIN' }
                   </Btn>
                </View>
             </View>
@@ -127,5 +136,12 @@ const mapStateToProps = state => {
    };
 }
 
+const mapDispatchToProps = dispatch => {
+   return {
+     onTryAuth: (userName, password) => dispatch(tryAuth(userName, password)),
+   //  onAutoSignIn: () => dispatch(authAutoSignIn())
+   };
+ }; 
 
-export default connect(mapStateToProps, null)(LoginScreen);
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
