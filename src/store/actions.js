@@ -7,7 +7,6 @@ export const uiStopLoading = () => ({ type: UI_STOP_LOADING });
 
 
 export const TRY_AUTH = 'TRY_AUTH';
-
 export const tryAuth = (userName, password) => ({ 
    type: TRY_AUTH, 
    payload: {
@@ -16,5 +15,9 @@ export const tryAuth = (userName, password) => ({
    } 
 });
 
-export const AUTH_SET_TOKEN = 'AUTH_SET_TOKEN';
-export const AUTH_REMOVE_TOKEN = 'AUTH_REMOVE_TOKEN';
+
+export const AUTH_AUTO_SIGNIN = 'AUTH_AUTO_SIGNIN';
+export const authAutoSignIn = () => ({
+   type: AUTH_AUTO_SIGNIN
+});
+

@@ -2,42 +2,20 @@ import React, { Component } from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
 
-import startMainTabs from '../../startMainTabs';
 import { fonts } from '../../assets/index';
 import Btn from '../../components/UI/ButtonWithBackground/ButtonWithBackground';
 import DefaultInput from '../../components/UI/DefaultInput/DefaultInput';
 import validate from '../../utility/validation';
-import { tryAuth } from '../../store/actions';
-import { getToken, deleteToken } from '../../store/sagas';
-import { verifyToken } from '../../store/api';
+import { tryAuth, authAutoSignIn } from '../../store/actions';
 
 class LoginScreen extends Component {
    constructor(props) {
       super(props);
    }
 
-   // componentDidMount() {
-   //    this.props.onAutoSignIn();
-   // }
-
-   componentWillMount = async () => {
-      const storedToken = await getToken();
-      console.log('ljToken: ' + storedToken);
-
-      if (!storedToken) {
-         return;
-      }
-
-      const result = await verifyToken(storedToken);
-      console.log('result: ' + result);
-      console.log('result.data.status: ' + result.data.status);
-
-      if (result.data.status === 200) {
-         //  deleteToken();
-         startMainTabs();
-      } else {
-         deleteToken();
-      }
+   // to do: premesti na bolje mesto
+   componentDidMount() {
+      this.props.onAutoSignIn();
    }
 
    state = {
@@ -160,7 +138,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
    return {
       onTryAuth: (userName, password) => dispatch(tryAuth(userName, password)),
-      // onAutoSignIn: () => dispatch(authAutoSignIn())
+      onAutoSignIn: () => dispatch(authAutoSignIn())
    };
 };
 
