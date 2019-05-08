@@ -15,9 +15,16 @@ export const tryAuth = (userName, password) => ({
    } 
 });
 
-
 export const AUTH_AUTO_SIGNIN = 'AUTH_AUTO_SIGNIN';
 export const authAutoSignIn = () => ({
    type: AUTH_AUTO_SIGNIN
 });
 
+
+
+
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
+
+export const loginSuccess = () => ({type: LOGIN_SUCCESS});
+export const loginFailed = () => ({type: LOGIN_FAILED});

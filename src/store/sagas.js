@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import startTabBasedApp from '../startTabBasedApp';
-import { TRY_AUTH, UI_START_LOADING, UI_STOP_LOADING, AUTH_AUTO_SIGNIN } from './actions';
+import { TRY_AUTH, UI_START_LOADING, UI_STOP_LOADING, AUTH_AUTO_SIGNIN, LOGIN_SUCCESS, LOGIN_FAILED } from './actions';
 import { login, verifyToken } from './api';
 import { storeToken, getToken, deleteToken } from './asyncStorage';
 
@@ -9,15 +9,18 @@ import { storeToken, getToken, deleteToken } from './asyncStorage';
 function* tryLogin(action) {
    try {
       yield put({ type: UI_START_LOADING });
+      yield put({ type: LOGIN_SUCCESS });
 
       const result = yield call(login, action.payload.userName, action.payload.password);
 
       yield put({ type: UI_STOP_LOADING });
       if (result.token) {
+         yield put({ type: LOGIN_SUCCESS });
          storeToken(result.token);
          startTabBasedApp();
       } else {
-         console.log('greska al u try');
+         yield put({ type: LOGIN_FAILED });
+         console.log('LOGIN_FAILED');
       }
 
    } catch (error) {

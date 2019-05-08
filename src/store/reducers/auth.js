@@ -1,24 +1,21 @@
-import { AUTH_SET_TOKEN, AUTH_REMOVE_TOKEN } from '../actions';
+import { LOGIN_SUCCESS, LOGIN_FAILED } from '../actions';
 
 const initialState = {
-  token: null,
-  expiryDate: null
+  loginFailed: false
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case AUTH_SET_TOKEN:
+    case LOGIN_SUCCESS:
       return {
         ...state,
-        token: action.token,
-        expiryDate: action.expiryDate
+        loginFailed: false
       };
 
-      case AUTH_REMOVE_TOKEN:
+      case LOGIN_FAILED:
         return {
           ...state,
-          token: null,
-          expiryDate: null
+          loginFailed: true
         };
 
     default:

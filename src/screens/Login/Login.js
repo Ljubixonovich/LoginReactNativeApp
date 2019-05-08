@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ImageBackground, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { connect } from 'react-redux';
 
 import { fonts } from '../../assets/index';
@@ -99,9 +99,12 @@ class LoginScreen extends Component {
                            !this.state.controls.password.valid}
                      >
                         {this.props.isLoading ? 'LOGGING IN...' : 'LOGIN'}
-                     </Btn>
+                     </Btn>                     
+                     <Text style={styles.errorText}>
+                        {this.props.isLoginFailed ? 'Login Failed. Please try again.' : ''}
+                     </Text>
                   </View>
-                  
+
                </View>
             </TouchableWithoutFeedback>
          </ImageBackground>
@@ -129,12 +132,18 @@ const styles = StyleSheet.create({
    input: {
       backgroundColor: '#eee',
       fontFamily: fonts.light
+   },
+   errorText: {
+      fontFamily: fonts.light,
+      color: 'white',
+      paddingTop: 30
    }
 });
 
 const mapStateToProps = state => {
    return {
-      isLoading: state.ui.isLoading
+      isLoading: state.ui.isLoading,
+      isLoginFailed: state.auth.loginFailed
    };
 }
 
