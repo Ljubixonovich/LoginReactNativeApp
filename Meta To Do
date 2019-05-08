@@ -11,8 +11,3 @@ export PATH="/home/ljubomir/Android/Sdk/platform-tools":$PATH
 
 
 react-native run-android
-
-To Do:
-   1. add KeyboardAvoidingView 
-
-
