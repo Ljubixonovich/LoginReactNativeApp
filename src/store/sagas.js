@@ -1,39 +1,11 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import AsyncStorage from '@react-native-community/async-storage';
 
+import startTabBasedApp from '../startTabBasedApp';
 import { TRY_AUTH, UI_START_LOADING, UI_STOP_LOADING, AUTH_AUTO_SIGNIN } from './actions';
 import { login, verifyToken } from './api';
-import startTabs from '../../src/startMainTabs';
-
-// AsyncStorage functions
-storeToken = async (token) => {
-   try {
-      await AsyncStorage.setItem('@token', token)
-   } catch (e) {
-   }
-}
-
-export const getToken = async () => {
-   try {
-      const value = await AsyncStorage.getItem('@token')
-      if (value !== null) {
-         return value;
-      }
-   } catch (e) {
-   }
-}
-
-export const deleteToken = async () => {
-   try {
-      await AsyncStorage.removeItem('@token')
-   } catch (e) {
-      // remove error
-   }
-   console.log('Token removed.')
-}
+import { storeToken, getToken, deleteToken } from './asyncStorage';
 
 
-// Sagas functions
 function* tryLogin(action) {
    try {
       yield put({ type: UI_START_LOADING });
@@ -43,7 +15,7 @@ function* tryLogin(action) {
       yield put({ type: UI_STOP_LOADING });
       if (result.token) {
          storeToken(result.token);
-         startTabs();
+         startTabBasedApp();
       } else {
          console.log('greska al u try');
       }
@@ -64,8 +36,8 @@ function* checkToken(action) {
       const result = yield call(verifyToken, storedToken);
       console.log('result.data.status: ' + result.data.status);
 
-      if (result.data.status === 200) {
-         startTabs();
+      if (result.data.status === 200) {         
+         startTabBasedApp();
       } else {
          deleteToken();
       }

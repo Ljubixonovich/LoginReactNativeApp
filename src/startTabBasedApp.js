@@ -1,9 +1,9 @@
 import { Navigation } from 'react-native-navigation';
 
-import { fonts } from '../src/assets/fonts';
+import { fonts } from './assets/fonts';
 
 
-const startTabs = () => {
+const startTabBasedApp = () => {
 
    Navigation.startTabBasedApp({
       tabs: [
@@ -53,4 +53,4 @@ const startTabs = () => {
 
 };
 
-export default startTabs;
+export default startTabBasedApp;

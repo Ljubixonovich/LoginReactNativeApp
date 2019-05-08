@@ -13,7 +13,6 @@ class LoginScreen extends Component {
       super(props);
    }
 
-   // to do: premesti na bolje mesto
    componentDidMount() {
       this.props.onAutoSignIn();
    }
